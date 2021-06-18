@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use BotMan\BotMan\BotMan;
+use BotMan\BotMan\Drivers\DriverManager;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use App\Conversations\ExampleConversation;
+use Illuminate\View\View;
+use JABirchall\BotMan\Drivers\Discord\DiscordDriver;
 
 class BotManController extends Controller
 {
@@ -13,13 +17,16 @@ class BotManController extends Controller
      */
     public function handle()
     {
+//        DriverManager::loadDriver(DiscordDriver::class);
+
         $botman = app('botman');
+
 
         $botman->listen();
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function tinker()
     {
